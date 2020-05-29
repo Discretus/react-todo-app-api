@@ -6,12 +6,12 @@ export class TodoService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAll() {
-    const todos = await this.prisma.todo.findMany();
+    const todos = await this.prisma.client.todo.findMany();
     return todos.sort((a, b) => a.id - b.id);
   }
 
   async add(text: string) {
-    return await this.prisma.todo.create({
+    return await this.prisma.client.todo.create({
       data: {
         text: text,
       },
@@ -20,7 +20,7 @@ export class TodoService {
 
   async delete(id: number) {
     try {
-      return await this.prisma.todo.delete({
+      return await this.prisma.client.todo.delete({
         where: {
           id: id,
         },
@@ -35,12 +35,12 @@ export class TodoService {
 
   async toggle(id: number) {
     try {
-      const { toggled } = await this.prisma.todo.findOne({
+      const { toggled } = await this.prisma.client.todo.findOne({
         where: {
           id: id,
         },
       });
-      return await this.prisma.todo.update({
+      return await this.prisma.client.todo.update({
         where: {
           id: id,
         },

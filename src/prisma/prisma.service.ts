@@ -3,6 +3,5 @@ import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class PrismaService {
-  prisma = new PrismaClient();
-  todo = this.prisma.todo;
+  public readonly client = new PrismaClient();
 }
