@@ -2,6 +2,10 @@
 /dist
 /node_modules
 
+#Env
+.env
+/prisma/.env
+
 # Logs
 logs
 *.log
